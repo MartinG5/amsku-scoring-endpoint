@@ -92,15 +92,16 @@ def calculate_lead_score():
         final_score = max(1, min(10, score))
 
         # Determine what happens next based on score
-        if final_score >= 8:
+       # Updated code - score 7+ gets booking link
+        if final_score >= 7:
             qualification = 'highly_qualified'
             next_step = 'direct_booking'
             message = "Excellent! Based on your background, you'd be a perfect fit for our program. I'm going to direct you to book a discovery call with Dr. Martin or Dr. Rigney right now."
-            booking_url = 'https://calendly.com/amsku-discovery'
-        elif final_score >= 6:
+            booking_url = 'https://calendly.com/amskucenter/residency-discovery-call'
+        elif final_score >= 5:
             qualification = 'qualified'
             next_step = 'follow_up'
-            message = "Great! You seem like a good potential fit for our program. I'd like to have someone from our team follow up with you personally about the next steps."
+            message = "Great! You seem like a good potential fit for our program. I'd like to have someone from our team follow up with you about the next steps."
             booking_url = None
         elif final_score >= 4:
             qualification = 'marginal'
