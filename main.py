@@ -111,7 +111,7 @@ def calculate_lead_score():
 
         # Determine what happens next based on score
        # Updated code - score 7+ gets booking link
-       if final_score >= 7:
+        if final_score >= 7:
             qualification = 'highly_qualified'
             next_step = 'direct_booking'
             message = "Excellent! Based on your background, you'd be a perfect fit for our program. I'm going to direct you to book a discovery call with Dr. Martin or Dr. Rigney right now."
