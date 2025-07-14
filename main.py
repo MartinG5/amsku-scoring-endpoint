@@ -111,11 +111,30 @@ def calculate_lead_score():
 
         # Determine what happens next based on score
        # Updated code - score 7+ gets booking link
-        if final_score >= 7:
-            qualification = 'highly_qualified'
-            next_step = 'direct_booking'
-            message = "Excellent! Based on your background, you'd be a perfect fit for our program. I'm going to direct you to book a discovery call with Dr. Martin or Dr. Rigney right now."
-            booking_url = 'https://calendly.com/amskucenter/residency-discovery-call'
+       if final_score >= 7:
+        qualification = 'highly_qualified'
+        next_step = 'direct_booking'
+        booking_url = 'https://calendly.com/amskucenter/residency-discovery-call'
+        
+        # Return formatted HTML message for the widget
+        formatted_message = f"""
+        🎉 EXCELLENT! You're qualified for AMSKU's residency program!
+        
+        📅 BOOK YOUR DISCOVERY CALL:
+        {booking_url}
+        
+        👆 Click the link above to schedule with Dr. Martin or Dr. Rigney.
+        """
+        
+        response = {
+            'score': final_score,
+            'factors': factors,
+            'qualification': qualification,
+            'next_step': next_step,
+            'message': formatted_message,
+            'booking_url': booking_url,
+            'display_booking_link': True  # Flag for the agent
+        }
         elif final_score >= 5:
             qualification = 'qualified'
             next_step = 'follow_up'
