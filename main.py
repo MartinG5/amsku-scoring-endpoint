@@ -17,6 +17,24 @@ def home():
 
 # This is the endpoint that ElevenLabs will call
 
+@app.route('/redirect', methods=['POST'])
+def redirect_to_booking():
+    try:
+        data = request.json
+        booking_url = data.get('booking_url')
+        
+        if not booking_url:
+            return jsonify({'error': 'No booking URL provided'}), 400
+        
+        # Return a redirect response
+        return jsonify({
+            'redirect': True,
+            'url': booking_url,
+            'message': 'Redirecting you to book your discovery call...'
+        })
+        
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 @app.route('/calculate_lead_score', methods=['POST'])
 def calculate_lead_score():
